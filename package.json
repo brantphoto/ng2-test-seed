@@ -13,9 +13,10 @@
     "copy": "cp src/{index.html,styles.css,system-config.js} built/",
     "copytemplates": "cp src/app/{*.html,*.css} built/app/",
     "build": "tsc && npm run copy && npm run copytemplates",
+    "start": "tsc && npm run copy && npm run copytemplates && http-server -p 9090 -c-1",
     "watch": "tsc --watch",
     "serve": "http-server -p 9090 -c-1",
-    "test": "karma start karma.conf.js"
+    "test": "tsc && npm run copy && npm run copytemplates && karma start karma.conf.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",

@@ -13,6 +13,7 @@ export class UserService {
   }
 
   getGreeting() {
+
     return this._loginService.login(this.pin).then((success) => {
       return success ? 'Welcome!': 'Login failure!';
     });

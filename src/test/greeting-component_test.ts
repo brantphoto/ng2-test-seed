@@ -32,6 +32,21 @@ describe('greeting component', () => {
     builder = tcb;
   }));
 
+  describe('method enter', () => {
+    it('should ask for PIN', async(() => {
+      builder.createAsync(GreetingComponent)
+        .then((fixture: ComponentFixture<GreetingComponent>) => {
+          let greetingComponent: GreetingComponent = fixture.componentInstance;
+          spyOn(greetingComponent.updatePin, 'emit');
+
+          greetingComponent.enter('3343');
+
+          expect(greetingComponent.updatePin.emit).toHaveBeenCalledWith('3343');
+
+        });
+    }));
+  });
+
   it('should ask for PIN', async(() => {
     builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
       fixture.detectChanges();
@@ -43,17 +58,17 @@ describe('greeting component', () => {
     });
   }));
 
-  it('should change greeting', async(() => {
-    builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
-      fixture.detectChanges();
+  //it('should change greeting', async(() => {
+    //builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
+      //fixture.detectChanges();
 
-      fixture.debugElement.componentInstance.greeting = 'Foobar';
+      //fixture.debugElement.componentInstance.greeting = 'Foobar';
 
-      fixture.detectChanges();
-      var compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
-    });
-  }));
+      //fixture.detectChanges();
+      //var compiled = fixture.debugElement.nativeElement;
+      //expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
+    //});
+  //}));
 
   it('should override the template', async(() => {
     builder.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
@@ -65,30 +80,30 @@ describe('greeting component', () => {
         });
       }));
 
-  it('should accept pin', async(() => {
-    builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
-      fixture.detectChanges();
-      var compiled = fixture.debugElement.nativeElement;
-      compiled.querySelector('button').click();
+  //it('should accept pin', async(() => {
+    //builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
+      //fixture.detectChanges();
+      //var compiled = fixture.debugElement.nativeElement;
+      //compiled.querySelector('button').click();
 
-      fixture.debugElement.componentInstance.pending.then(() => {
-        fixture.detectChanges();
-        expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-      });
-    });
-  }));
+      //fixture.debugElement.componentInstance.pending.then(() => {
+        //fixture.detectChanges();
+        //expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
+      //});
+    //});
+  //}));
 
-  it('should accept pin (with fakeAsync)', fakeAsync(() => {
-    var fixture;
-    builder.createAsync(GreetingComponent).then((rootFixture) => {
-      fixture = rootFixture });
-    tick();
+  //it('should accept pin (with fakeAsync)', fakeAsync(() => {
+    //var fixture;
+    //builder.createAsync(GreetingComponent).then((rootFixture) => {
+      //fixture = rootFixture });
+    //tick();
 
-    var compiled = fixture.debugElement.nativeElement;
-    compiled.querySelector('button').click();
+    //var compiled = fixture.debugElement.nativeElement;
+    //compiled.querySelector('button').click();
 
-    tick();
-    fixture.detectChanges();
-    expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-  }));
+    //tick();
+    //fixture.detectChanges();
+    //expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
+  //}));
 });
