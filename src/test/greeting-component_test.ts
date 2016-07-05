@@ -33,7 +33,7 @@ describe('greeting component', () => {
   }));
 
   describe('method enter', () => {
-    it('should ask for PIN', async(() => {
+    it('should emit update event with arguement', async(() => {
       builder.createAsync(GreetingComponent)
         .then((fixture: ComponentFixture<GreetingComponent>) => {
           let greetingComponent: GreetingComponent = fixture.componentInstance;
@@ -58,52 +58,14 @@ describe('greeting component', () => {
     });
   }));
 
-  //it('should change greeting', async(() => {
-    //builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
-      //fixture.detectChanges();
-
-      //fixture.debugElement.componentInstance.greeting = 'Foobar';
-
-      //fixture.detectChanges();
-      //var compiled = fixture.debugElement.nativeElement;
-      //expect(compiled.querySelector('h3')).toHaveText('Status: Foobar');
-    //});
-  //}));
-
   it('should override the template', async(() => {
     builder.overrideTemplate(GreetingComponent, `<span>{{greeting}}<span>`)
-      .createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
+      .createAsync(GreetingComponent)
+      .then((fixture: ComponentFixture<GreetingComponent>) => {
           fixture.detectChanges();
 
           var compiled = fixture.debugElement.nativeElement;
           expect(compiled).toHaveText('Enter PIN');
-        });
-      }));
-
-  //it('should accept pin', async(() => {
-    //builder.createAsync(GreetingComponent).then((fixture: ComponentFixture<GreetingComponent>) => {
-      //fixture.detectChanges();
-      //var compiled = fixture.debugElement.nativeElement;
-      //compiled.querySelector('button').click();
-
-      //fixture.debugElement.componentInstance.pending.then(() => {
-        //fixture.detectChanges();
-        //expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-      //});
-    //});
-  //}));
-
-  //it('should accept pin (with fakeAsync)', fakeAsync(() => {
-    //var fixture;
-    //builder.createAsync(GreetingComponent).then((rootFixture) => {
-      //fixture = rootFixture });
-    //tick();
-
-    //var compiled = fixture.debugElement.nativeElement;
-    //compiled.querySelector('button').click();
-
-    //tick();
-    //fixture.detectChanges();
-    //expect(compiled.querySelector('h3')).toHaveText('Status: Welcome!');
-  //}));
+      });
+    }));
 });

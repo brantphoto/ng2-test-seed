@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output } from '@angular/core';
-import {UserService} from './user-service';
 
 @Component({
   selector: 'my-greeting',
@@ -18,14 +17,8 @@ export class GreetingComponent {
   greeting: string = 'Enter PIN';
   pending: Promise<void>;
 
-  constructor(public user: UserService) {
-  }
-
   enter(pin:string) {
     this.updatePin.emit(pin);
-    //this.greeting = 'Processing...';
-    //this.pending = this.user.getGreeting().then((greeting) => {
-      //this.greeting = greeting;
-    //});
   }
 }
+
