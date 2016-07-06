@@ -1,0 +1,29 @@
+
+<!-- GREETING COMPONENT -->
+
+<!--ANGULAR 1-->
+<input ng-model="$ctrl.pinInput" placeholder="1111" type="number"/>
+<button ng-click="enter($ctrl.pinInout)">Enter</button>
+<h3>Status: {{greeting}}</h3>
+
+<!--Angular 2-->
+<input #pinInput placeholder="1111" type="number"/>
+<button (click)="enter(pinInput.value)">Enter</button>
+<h3>Status: {{greeting}}</h3>
+
+
+
+
+<!-- APP COMPONENT -->
+
+<!--ANGULAR 1-->
+<my-fancy-border title="The PIN Machine">
+    <my-greeting="$ctrl.updatePin(pin)"></my-greeting>
+</my-fancy-border>
+<my-hint pin="$ctrl.latestPin"></my-hint>
+
+<!--ANGULAR 2-->
+<my-fancy-border title="The PIN Machine">
+  <my-greeting (updatePin)="updatePin($event)"></my-greeting>
+</my-fancy-border>
+<my-hint [pin]="latestPin" ></my-hint>

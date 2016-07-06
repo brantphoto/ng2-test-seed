@@ -15,7 +15,6 @@ import {Component, EventEmitter, Output } from '@angular/core';
 export class GreetingComponent {
   @Output() updatePin = new EventEmitter<string>();
   greeting: string = 'Enter PIN';
-  pending: Promise<void>;
 
   enter(pin:string) {
     this.updatePin.emit(pin);

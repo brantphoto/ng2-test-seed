@@ -7,6 +7,7 @@ import {PinService} from './pin-service';
   template: `<h1>Have You Tried {{suggestedPin}}?`
 })
 export class HintComponent {
+
   @Input() pin: string;
   suggestedPin: string = "";
   constructor(public pinService: PinService) {
