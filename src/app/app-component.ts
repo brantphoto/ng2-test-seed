@@ -18,7 +18,4 @@ export class AppComponent {
   updatePin(pin: string) {
     this.latestPin = pin;
   }
-
 }
-
-

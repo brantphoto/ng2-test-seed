@@ -1,4 +1,3 @@
-
 <!-- GREETING COMPONENT -->
 
 <!--ANGULAR 1-->
@@ -27,3 +26,18 @@
   <my-greeting (updatePin)="updatePin($event)"></my-greeting>
 </my-fancy-border>
 <my-hint [pin]="latestPin" ></my-hint>
+
+
+<!--MY HINT-->
+<!-- NG-1 -->
+<my-hint pin="$ctrl.latestPin"></my-hint>
+<!-- NG-2 -->
+<my-hint [pin]="latestPin" ></my-hint>
+
+<!--MY HINT-->
+
+<!-- NG-1 -->
+<my-greeting="$ctrl.updatePin(pin)">
+<!-- NG-2 -->
+<my-greeting (updatePin)="updatePin($event)">
+
