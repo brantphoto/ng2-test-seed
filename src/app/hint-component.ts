@@ -4,7 +4,7 @@ import {PinService} from './pin-service';
 @Component({
   selector: 'my-hint',
   providers: [PinService],
-  template: `<h1>Have You Tried {{suggestedPin}}?`
+  template: `<h1>Have You Tried {{suggestedPin}}?</h1>`
 })
 export class HintComponent {
 
