@@ -32,17 +32,13 @@ describe('greeting component', () => {
     builder = tcb;
   }));
 
-  describe('method enter', () => {
+  describe('method: enter', () => {
     it('should emit update event with arguement', async(() => {
       builder.createAsync(GreetingComponent)
         .then((fixture: ComponentFixture<GreetingComponent>) => {
-          let greetingComponent: GreetingComponent = fixture.componentInstance;
-          spyOn(greetingComponent.updatePin, 'emit');
-
-          greetingComponent.enter('3343');
-
-          expect(greetingComponent.updatePin.emit).toHaveBeenCalledWith('3343');
-
+          //given
+          //when
+          //then
         });
     }));
   });

@@ -18,6 +18,5 @@ const HintComponent = {
     bindings: {
         pin: '<',
     },
-    controller: HintComponentController {
-    }
+    controller: HintComponentController
 }
